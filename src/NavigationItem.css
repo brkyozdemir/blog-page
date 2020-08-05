@@ -1,0 +1,47 @@
+.NavigationItem {
+  margin: 10px 0;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+}
+
+.NavigationItem a {
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+}
+
+.NavigationItem a:hover,
+.NavigationItem a:active,
+.NavigationItem a.active {
+  cursor: pointer;
+  color: #3f51b5;
+  font-weight: 600;
+}
+
+@media (min-width: 500px) {
+  .NavigationItem {
+    margin: 0;
+    display: flex;
+    height: 100%;
+    width: auto;
+    align-items: center;
+  }
+
+  .NavigationItem a {
+    color: white;
+    height: 100%;
+    padding: 16px 10px;
+    border-bottom: 4px solid transparent;
+  }
+}
+
+.NavigationItem .signout{
+  color: white !important
+}
+
+.NavigationItem .signout:hover{
+  color: white !important;
+}
