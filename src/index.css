@@ -42,3 +42,7 @@ code {
 #paper .MuiAccordionDetails-root{
   display: block !important;
 }
+
+.paginator{
+  margin-top: 10px;
+}

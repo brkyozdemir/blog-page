@@ -64,8 +64,10 @@ const Login = () => {
                 password: password
             }
             const response = await api.login(data);
-            localStorage.setItem('tokenjwt', response.token)
-            setToken(response.token);
+            if (response.message !== "Auth failed!") {
+                localStorage.setItem('tokenjwt', response.token)
+                setToken(response.token);
+            }
             response.message !== "Auth failed!" ? enqueueSnackbar(response.message, { variant: 'success' }) : enqueueSnackbar(response.message, { variant: 'error' });
         }
     }

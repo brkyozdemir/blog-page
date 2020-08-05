@@ -46,7 +46,10 @@ const Posts = () => {
         title: '',
         content: ''
     });
-    const [imgPreview, setImgPreview] = React.useState();
+    const [imgPreview, setImgPreview] = React.useState({
+        preview: null,
+        raw: null
+    });
     const [titleControl, setTitleControl] = React.useState(false)
     const [contentControl, setContentControl] = React.useState(false)
     const uploadButton = React.useRef(null);
@@ -58,7 +61,6 @@ const Posts = () => {
     };
 
     const sendPost = async () => {
-        console.log(imgPreview.raw)
         values.content === '' ? setContentControl(true) : setContentControl(false);
         values.title === '' ? setTitleControl(true) : setTitleControl(false)
         if (values.title !== '' && values.content !== '') {
@@ -68,8 +70,14 @@ const Posts = () => {
             data.append('image', image);
             const response = await api.sendPost(data)
             response.message === "Post added successfully!" ? enqueueSnackbar(response.message, { variant: 'success' }) : enqueueSnackbar(response.message, { variant: 'error' });
-            setValues({})
-            setImage({})
+            setValues({
+                title: "",
+                content: ""
+            })
+            setImgPreview({
+                preview: null,
+                raw: null
+            })
         }
     }
 
@@ -101,7 +109,7 @@ const Posts = () => {
                 <Button onClick={() => handleUpload()} variant="outlined" color="secondary" className={classes.button}>
                     Upload
                 </Button>
-                {imgPreview && <img src={imgPreview.preview} alt="upload-img" style={{ width: "100%" }} />}
+                {imgPreview.preview !== null ? <img src={imgPreview.preview} alt="upload-img" style={{ width: "100%" }} /> : ""}
                 <input
                     ref={uploadButton}
                     style={{ display: "none" }}

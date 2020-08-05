@@ -13,8 +13,8 @@ export const sendPost = async (data) => {
     return response.json()
 }
 
-export const listPosts = async () => {
-    const url = `${domain}/api/posts`;
+export const listPosts = async (pagesize = 7, page = 1) => {
+    const url = `${domain}/api/posts?pagesize=${pagesize}&page=${page}`;
     const response = await fetch(url, {
         method: "GET",
         headers: {

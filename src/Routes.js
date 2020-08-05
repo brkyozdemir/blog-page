@@ -7,7 +7,6 @@ import Signup from './Login/Signup';
 
 const Routes = () => {
     const [token, setToken] = React.useState(localStorage.getItem('tokenjwt') === null)
-    console.log(token)
 
     return <>
         <Switch>
