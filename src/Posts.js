@@ -68,7 +68,9 @@ const Posts = () => {
             data.append('title', values.title);
             data.append('content', values.content);
             data.append('image', image);
+            data.append('creator', null);
             const response = await api.sendPost(data)
+            console.log(response)
             response.message === "Post added successfully!" ? enqueueSnackbar(response.message, { variant: 'success' }) : enqueueSnackbar(response.message, { variant: 'error' });
             setValues({
                 title: "",

@@ -47,3 +47,15 @@ export const login = async (data) => {
     })
     return response.json();
 }
+
+export const deletePost = async (id) => {
+    const url = `${domain}/api/posts/${id}`;
+    const token = localStorage.getItem('tokenjwt');
+    const response = await fetch(url,{
+        method: "DELETE",
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    });
+    return response.json()
+}

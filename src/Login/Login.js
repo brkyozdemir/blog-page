@@ -65,7 +65,9 @@ const Login = () => {
             }
             const response = await api.login(data);
             if (response.message !== "Auth failed!") {
+                console.log(response)
                 localStorage.setItem('tokenjwt', response.token)
+                localStorage.setItem('userIdBlog', response.userId)
                 setToken(response.token);
             }
             response.message !== "Auth failed!" ? enqueueSnackbar(response.message, { variant: 'success' }) : enqueueSnackbar(response.message, { variant: 'error' });
